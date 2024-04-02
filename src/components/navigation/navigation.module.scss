@@ -1,0 +1,12 @@
+:root {
+    --tw-text-opacity: 1
+}
+
+.text {
+    color : whitesmoke;
+    cursor: pointer;
+
+    &:hover {
+        color: rgb(59 196 226/var(--tw-text-opacity));
+    }
+}

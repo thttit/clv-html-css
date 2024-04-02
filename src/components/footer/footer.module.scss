@@ -1,0 +1,17 @@
+:root {
+    --tw-text-opacity: 1
+}
+
+.linkText {
+    text-decoration: none;
+
+    &:hover {
+        color: rgb(59 196 226/var(--tw-text-opacity));
+    }
+}
+
+.iconYoutube {
+    &:hover {
+        color: #FF0000;
+    }
+}
