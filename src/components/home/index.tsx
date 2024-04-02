@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <Container maxWidth="lg">
       <Grid container mt={10} spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} display={"grid"} alignItems={"center"}>
           <ReactPlayer
             url="https://www.youtube.com/watch?v=lkfI3cpjsII"
             width={"100%"}
