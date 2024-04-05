@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { colors, createTheme, ThemeProvider } from "@mui/material";
 import "./theme.scss";
 declare module "@mui/material/styles" {
   interface CustomTheme {
@@ -129,8 +129,9 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          "&:hoverVisible": {
-            background: "none",
+          "&:hover": {
+            backgroundColor: "rgb(59 196 226/1)",
+            color: "whitesmoke",
           },
         },
       },

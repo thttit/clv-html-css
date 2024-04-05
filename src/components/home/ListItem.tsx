@@ -59,16 +59,11 @@ const items = [
 
 const ListItem = () => {
   return (
-    <Box textAlign={"center"} sx={{ flexGrow: 1, mt: 10, mb: 2 }}>
+    <Box textAlign={"center"} sx={{ flexGrow: 1, mt: 11, mb: 2 }}>
       <Typography fontSize={{ xs: "30px", md: "48px" }}>
         What <span style={{ color: "rgb(59 196 226)" }}>we can do</span>
       </Typography>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        p={2}
-      >
+      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }} p={2}>
         {items.map((item, index) => (
           <Grid item xs={4} sm={4} md={4} key={index}>
             <Card
@@ -79,11 +74,12 @@ const ListItem = () => {
                 borderRadius: "20px",
                 height: "100%",
                 border: getBorderByIndex(index),
+                minHeight: "400px",
               }}
             >
-              <img width={"60px"} height={"60px"} src={item.icon} alt="" />
+              <img width="60px" height="60px" src={item.icon} alt="" />
               <CardContent sx={{ gap: 2, textAlign: "start" }}>
-                <Typography mb={1} variant="h5" fontWeight={"bold"}>
+                <Typography mb={1} variant="h5" fontWeight="bold">
                   {item.title}
                 </Typography>
                 <Typography variant="subtitle1">{item.content}</Typography>

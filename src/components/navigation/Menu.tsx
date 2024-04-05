@@ -18,7 +18,6 @@ const UITooltip = styled(({ className, ...props }: TooltipProps) => (
 const MenuList = ({ name, children }: any) => {
   return (
     <UITooltip
-      disableFocusListener
       children={
         <Box display={"flex"} justifyContent={"space-between"}>
           <Typography

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
   Box,
@@ -6,17 +6,9 @@ import {
   Container,
   IconButton,
   Link,
-  Menu,
   MenuItem,
-  SwipeableDrawer,
   Toolbar,
-  Tooltip,
   Typography,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Drawer,
   Collapse,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -45,9 +37,6 @@ const listItems = [
 const Navigation = () => {
   const [open, setOpen] = React.useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
   const handleClick = () => {
     setOpen(!open);
   };
@@ -88,7 +77,11 @@ const Navigation = () => {
             }}
           >
             {listItems.map((item) => (
-              <MenuList name={item.name} children={item.content} />
+              <MenuList
+                key={item.name}
+                name={item.name}
+                children={item.content}
+              />
             ))}
             <MenuItem>
               <Typography
@@ -111,7 +104,7 @@ const Navigation = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "whitesmoke",
+                background: "whitesmoke",
                 color: "#03204c",
                 fontSize: "14px",
                 borderRadius: "8px",
@@ -130,7 +123,19 @@ const Navigation = () => {
               display: { xs: "flex", md: "none" },
             }}
           >
-            <IconButton size="large" onClick={handleClick} color="inherit">
+            <IconButton
+              size="medium"
+              onClick={handleClick}
+              color="inherit"
+              sx={{
+                backgroundColor: open ? "rgba(55, 65, 81, 0.8)" : "transparent",
+                outline: open ? "2px solid transparent" : "none",
+                outlineOffset: "2px",
+                borderRadius: "8px",
+                transform: open ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.2s ease-in-out",
+              }}
+            >
               <MenuIcon />
             </IconButton>
           </Box>
