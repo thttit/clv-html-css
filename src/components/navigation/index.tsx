@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   AppBar,
   Box,
@@ -6,15 +6,19 @@ import {
   Container,
   IconButton,
   Link,
+  List,
+  ListItem,
+  Menu,
   MenuItem,
   Toolbar,
   Typography,
-  Collapse,
 } from "@mui/material";
+import Collapse, { CollapseProps } from "@mui/material/Collapse";
 import MenuIcon from "@mui/icons-material/Menu";
 import Assets from "../../assets";
-import MenuList from "./Menu";
+import MenuListItems from "./Menu";
 import styles from "./navigation.module.scss";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const listItems = [
   {
@@ -35,11 +39,21 @@ const listItems = [
   },
 ];
 const Navigation = () => {
-  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [open, setOpen] = useState(false); // State for mobile menu collapse
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMobileMenu = () => {
+    setOpen(!open); // Toggle mobile menu visibility
+  };
+
   const list = () => (
     <Box p={2}>
       <Typography
@@ -52,7 +66,7 @@ const Navigation = () => {
       </Typography>
       {listItems.map((item) => (
         <Box key={item.name} mb={2}>
-          <MenuList name={item.name} children={item.content} />
+          <MenuListItems name={item.name} children={item.content} />
         </Box>
       ))}
     </Box>
@@ -69,6 +83,7 @@ const Navigation = () => {
           <Link sx={{ flexGrow: 1 }} href="/">
             <img alt="" src={Assets.logo} />
           </Link>
+          {/* Desktop navigation */}
           <Box
             sx={{
               flexGrow: 1,
@@ -77,7 +92,7 @@ const Navigation = () => {
             }}
           >
             {listItems.map((item) => (
-              <MenuList
+              <MenuListItems
                 key={item.name}
                 name={item.name}
                 children={item.content}
@@ -116,7 +131,7 @@ const Navigation = () => {
             </Button>
           </Link>
 
-          {/*=============RESPONSIVE==============  */}
+          {/*=============Mobile navigation==============  */}
           <Box
             sx={{
               right: 0,
@@ -125,7 +140,7 @@ const Navigation = () => {
           >
             <IconButton
               size="medium"
-              onClick={handleClick}
+              onClick={handleMobileMenu}
               color="inherit"
               sx={{
                 backgroundColor: open ? "rgba(55, 65, 81, 0.8)" : "transparent",
@@ -174,6 +189,45 @@ const Navigation = () => {
           </Link>
           {list()}
         </Collapse>
+        {/* <OutsideClickHandler
+          children={
+            <Collapse
+              sx={{
+                p: 1,
+                width: "100%",
+                display: { xs: "flex", md: "none" },
+              }}
+              in={open}
+              timeout="auto"
+              unmountOnExit
+            >
+              <Link
+                href="/"
+                sx={{
+                  flexGrow: 0,
+                  textDecoration: "none",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "rgb(59 196 226)",
+                    color: "whitesmoke",
+                    fontSize: "14px",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    textTransform: "none",
+                    mb: 2,
+                  }}
+                >
+                  Contact Us
+                </Button>
+              </Link>
+              {list()}
+            </Collapse>
+          }
+          onOutsideClick={() => setOpen(false)}
+        /> */}
       </Container>
     </AppBar>
   );
