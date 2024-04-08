@@ -21,14 +21,15 @@ const UITooltip = styled(({ className, ...props }: TooltipProps) => (
 const MenuListItems = ({ name, children }: any) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleTouchStart = () => {
     setIsOpen(!isOpen);
   };
   return (
     <>
-      {fullScreen ? (
+      {mobile ? (
+        //=============Mobile menu=============
         <UITooltip
           open={isOpen}
           children={
@@ -75,6 +76,7 @@ const MenuListItems = ({ name, children }: any) => {
           }
         />
       ) : (
+        //=============Desktop menu=============
         <UITooltip
           disableFocusListener
           children={

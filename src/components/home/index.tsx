@@ -1,12 +1,13 @@
 import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import ListItem from "./ListItem";
+import styles from "./styles.module.scss";
 
 const HomePage = () => {
   return (
     <Container maxWidth="lg">
-      <Grid overflow={"hidden"} container mt={10} spacing={2}>
+      <Grid overflow={"hidden"} container mt={10}>
         <Grid item xs={12} md={6} display={"grid"} alignItems={"center"}>
           <ReactPlayer
             url="https://www.youtube.com/watch?v=lkfI3cpjsII"

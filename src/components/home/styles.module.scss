@@ -1,0 +1,8 @@
+.section {
+    opacity   : 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.section.in {
+    opacity: 1;
+}

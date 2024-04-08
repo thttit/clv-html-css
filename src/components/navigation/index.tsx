@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -6,19 +6,15 @@ import {
   Container,
   IconButton,
   Link,
-  List,
-  ListItem,
-  Menu,
   MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
-import Collapse, { CollapseProps } from "@mui/material/Collapse";
+import Collapse from "@mui/material/Collapse";
 import MenuIcon from "@mui/icons-material/Menu";
 import Assets from "../../assets";
 import MenuListItems from "./Menu";
 import styles from "./navigation.module.scss";
-import OutsideClickHandler from "react-outside-click-handler";
 
 const listItems = [
   {
@@ -39,19 +35,10 @@ const listItems = [
   },
 ];
 const Navigation = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [open, setOpen] = useState(false); // State for mobile menu collapse
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   const handleMobileMenu = () => {
-    setOpen(!open); // Toggle mobile menu visibility
+    setOpen(!open);
   };
 
   const list = () => (
@@ -79,11 +66,10 @@ const Navigation = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ padding: 2, height: "100%" }}>
-          {/* logo */}
           <Link sx={{ flexGrow: 1 }} href="/">
             <img alt="" src={Assets.logo} />
           </Link>
-          {/* Desktop navigation */}
+          {/*=============Desktop navigation============= */}
           <Box
             sx={{
               flexGrow: 1,
@@ -189,45 +175,6 @@ const Navigation = () => {
           </Link>
           {list()}
         </Collapse>
-        {/* <OutsideClickHandler
-          children={
-            <Collapse
-              sx={{
-                p: 1,
-                width: "100%",
-                display: { xs: "flex", md: "none" },
-              }}
-              in={open}
-              timeout="auto"
-              unmountOnExit
-            >
-              <Link
-                href="/"
-                sx={{
-                  flexGrow: 0,
-                  textDecoration: "none",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "rgb(59 196 226)",
-                    color: "whitesmoke",
-                    fontSize: "14px",
-                    borderRadius: "8px",
-                    fontWeight: "bold",
-                    textTransform: "none",
-                    mb: 2,
-                  }}
-                >
-                  Contact Us
-                </Button>
-              </Link>
-              {list()}
-            </Collapse>
-          }
-          onOutsideClick={() => setOpen(false)}
-        /> */}
       </Container>
     </AppBar>
   );

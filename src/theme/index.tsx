@@ -1,4 +1,4 @@
-import { colors, createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import "./theme.scss";
 declare module "@mui/material/styles" {
   interface CustomTheme {
