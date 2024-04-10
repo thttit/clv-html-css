@@ -1,5 +1,5 @@
 const Assets = {
-    logo: require("../assets/logo.png"),
+    logo: require("../assets/CLT_Logo-W.png"),
 }
 
 export default Assets;

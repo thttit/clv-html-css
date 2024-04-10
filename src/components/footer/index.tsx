@@ -22,7 +22,7 @@ const Footer = () => {
           alignItems={"center"}
           flexDirection={{
             xs: "column-reverse",
-            md: "row",
+            sm: "row",
           }}
         >
           <Grid item xs={12} sm={6}>
